@@ -10,14 +10,14 @@
 3. При ручном сохранении ценной бумаги проводить валидацию передаваемых
 данных в поле name - только кириллица, цифры и пробел;
 4. getAll вывод таблицы с данными из тегов:
- secid
- regnumber
- name
- emitent_title
- tradedate
- numtrades
- open
- close
+ secid
+ regnumber
+ name
+ emitent_title
+ tradedate
+ numtrades
+ open
+ close
 SortBy emitent_title и tradedate;
 
 5. Выбранную архитектуру решения и инструкцию по запуску приложения
