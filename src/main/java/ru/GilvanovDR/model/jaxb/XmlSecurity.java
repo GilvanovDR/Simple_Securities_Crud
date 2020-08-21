@@ -33,6 +33,22 @@ public class XmlSecurity {
         this.emitentTitle = emitentTitle;
     }
 
+    public String getSecId() {
+        return secId;
+    }
+
+    public String getRegNumber() {
+        return regNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmitentTitle() {
+        return emitentTitle;
+    }
+
     @Override
     public String toString() {
         return "XmlSecurity{" +

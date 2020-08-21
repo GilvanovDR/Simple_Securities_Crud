@@ -4,6 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="ru.GilvanovDR.**.service"/>
+
     <bean id="historyMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
         <property name="classesToBeBound">
             <list>
@@ -12,6 +13,7 @@
             </list>
         </property>
     </bean>
+
     <bean id="securitiesMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
         <property name="classesToBeBound">
             <list>
@@ -20,6 +22,7 @@
             </list>
         </property>
     </bean>
+
     <bean id="objXmlMapper" class="ru.GilvanovDR.service.ObjXMLMapper">
         <constructor-arg name="historyMarshaller" ref="historyMarshaller"/>
         <constructor-arg name="securitiesMarshaller" ref="securitiesMarshaller"/>

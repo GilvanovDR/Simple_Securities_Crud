@@ -1,6 +1,8 @@
 package ru.GilvanovDR.service;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.oxm.Unmarshaller;
+import org.springframework.stereotype.Service;
 import ru.GilvanovDR.model.jaxb.XmlHistory;
 import ru.GilvanovDR.model.jaxb.XmlSecurity;
 import ru.GilvanovDR.model.jaxb.XmlHistoryContainer;
@@ -10,6 +12,7 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+
 
 public class ObjXMLMapper{
     private final Unmarshaller historyMarshaller;
