@@ -1,8 +1,8 @@
 package ru.GilvanovDR.service;
 
 import org.springframework.oxm.Unmarshaller;
-import ru.GilvanovDR.model.jaxb.History;
-import ru.GilvanovDR.model.jaxb.Security;
+import ru.GilvanovDR.model.jaxb.XmlHistory;
+import ru.GilvanovDR.model.jaxb.XmlSecurity;
 import ru.GilvanovDR.model.jaxb.XmlHistoryContainer;
 import ru.GilvanovDR.model.jaxb.XmlSecurityContainer;
 
@@ -20,7 +20,7 @@ public class ObjXMLMapper{
         this.securitiesMarshaller = securitiesMarshaller;
     }
 
-    public List<Security> XmlToSecurity(String fileName) throws IOException {
+    public List<XmlSecurity> XmlToSecurity(String fileName) throws IOException {
         XmlSecurityContainer document;
         try (FileInputStream is = new FileInputStream(fileName)) {
             document = (XmlSecurityContainer) this.securitiesMarshaller.unmarshal(new StreamSource(is));
@@ -28,7 +28,7 @@ public class ObjXMLMapper{
         return document.getDataContainer().getElements();
     }
 
-    public List<History> XmlToHistory(String fileName) throws IOException {
+    public List<XmlHistory> XmlToHistory(String fileName) throws IOException {
         XmlHistoryContainer document;
         try (FileInputStream is = new FileInputStream(fileName)) {
             document = (XmlHistoryContainer) this.historyMarshaller.unmarshal(new StreamSource(is));

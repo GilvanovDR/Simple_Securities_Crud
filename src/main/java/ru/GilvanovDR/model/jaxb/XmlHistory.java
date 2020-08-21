@@ -1,9 +1,8 @@
 package ru.GilvanovDR.model.jaxb;
 
 import javax.xml.bind.annotation.XmlAttribute;
-import java.io.Serializable;
 
-public class History implements Serializable {
+public class XmlHistory {
     protected String secId;
     protected String tradeDate;
     protected String numTrades;
@@ -37,7 +36,7 @@ public class History implements Serializable {
 
     @Override
     public String toString() {
-        return "History{" +
+        return "XmlHistory{" +
                 "secId='" + secId + '\'' +
                 ", tradeDate='" + tradeDate + '\'' +
                 ", numTrades='" + numTrades + '\'' +

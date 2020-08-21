@@ -1,16 +1,9 @@
 package ru.GilvanovDR.model.jaxb;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.io.Serializable;
 
 
-public class Security implements Serializable {
+public class XmlSecurity {
 
     protected String secId;
 
@@ -42,7 +35,7 @@ public class Security implements Serializable {
 
     @Override
     public String toString() {
-        return "Security{" +
+        return "XmlSecurity{" +
                 "secId='" + secId + '\'' +
                 ", regNumber='" + regNumber + '\'' +
                 ", name='" + name + '\'' +

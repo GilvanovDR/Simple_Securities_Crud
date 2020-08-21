@@ -5,8 +5,6 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
-
-//https://www.netjstech.com/2018/11/spring-object-xml-mapping-support-jaxb-example.html
 @XmlRootElement(name = "document")
 public class XmlHistoryContainer {
     private List<HistoryDataContainer> dataContainers;
@@ -21,15 +19,15 @@ public class XmlHistoryContainer {
     }
 
     public static class HistoryDataContainer {
-        private List<History> elements;
+        private List<XmlHistory> elements;
 
-        public List<History> getElements() {
+        public List<XmlHistory> getElements() {
             return elements;
         }
 
         @XmlElementWrapper(name = "rows")
         @XmlElement(name = "row")
-        public void setElements(List<History> elements) {
+        public void setElements(List<XmlHistory> elements) {
             this.elements = elements;
         }
     }

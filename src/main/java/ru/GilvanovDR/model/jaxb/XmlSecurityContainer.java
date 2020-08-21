@@ -5,8 +5,6 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
-
-//https://www.netjstech.com/2018/11/spring-object-xml-mapping-support-jaxb-example.html
 @XmlRootElement(name = "document")
 public class XmlSecurityContainer {
     private SecurityDataContainer dataContainer;
@@ -21,15 +19,15 @@ public class XmlSecurityContainer {
     }
 
     public static class SecurityDataContainer {
-        private List<Security> elements;
+        private List<XmlSecurity> elements;
 
-        public List<Security> getElements() {
+        public List<XmlSecurity> getElements() {
             return elements;
         }
 
         @XmlElementWrapper(name = "rows")
         @XmlElement(name = "row")
-        public void setElements(List<Security> elements) {
+        public void setElements(List<XmlSecurity> elements) {
             this.elements = elements;
         }
     }

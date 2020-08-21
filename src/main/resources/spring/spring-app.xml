@@ -8,7 +8,7 @@
         <property name="classesToBeBound">
             <list>
                 <value>ru.GilvanovDR.model.jaxb.XmlHistoryContainer</value>
-                <value>ru.GilvanovDR.model.jaxb.History</value>
+                <value>ru.GilvanovDR.model.jaxb.XmlHistory</value>
             </list>
         </property>
     </bean>
@@ -16,7 +16,7 @@
         <property name="classesToBeBound">
             <list>
                 <value>ru.GilvanovDR.model.jaxb.XmlSecurityContainer</value>
-                <value>ru.GilvanovDR.model.jaxb.Security</value>
+                <value>ru.GilvanovDR.model.jaxb.XmlSecurity</value>
             </list>
         </property>
     </bean>
