@@ -9,31 +9,6 @@ public class XmlHistory {
     protected String open;
     protected String close;
 
-    @XmlAttribute(name = "SECID")
-    public void setSecId(String secId) {
-        this.secId = secId;
-    }
-
-    @XmlAttribute(name = "TRADEDATE")
-    public void setTradeDate(String tradeDate) {
-        this.tradeDate = tradeDate;
-    }
-
-    @XmlAttribute(name = "NUMTRADES")
-    public void setNumTrades(String numTrades) {
-        this.numTrades = numTrades;
-    }
-
-    @XmlAttribute(name = "OPEN")
-    public void setOpen(String open) {
-        this.open = open;
-    }
-
-    @XmlAttribute(name = "CLOSE")
-    public void setClose(String close) {
-        this.close = close;
-    }
-
     @Override
     public String toString() {
         return "XmlHistory{" +
@@ -43,5 +18,50 @@ public class XmlHistory {
                 ", open='" + open + '\'' +
                 ", close='" + close + '\'' +
                 '}';
+    }
+
+    public String getSecId() {
+        return secId;
+    }
+
+    @XmlAttribute(name = "SECID")
+    public void setSecId(String secId) {
+        this.secId = secId;
+    }
+
+    public String getTradeDate() {
+        return tradeDate;
+    }
+
+    @XmlAttribute(name = "TRADEDATE")
+    public void setTradeDate(String tradeDate) {
+        this.tradeDate = tradeDate;
+    }
+
+    public String getNumTrades() {
+        return numTrades;
+    }
+
+    @XmlAttribute(name = "NUMTRADES")
+    public void setNumTrades(String numTrades) {
+        this.numTrades = numTrades;
+    }
+
+    public String getOpen() {
+        return open;
+    }
+
+    @XmlAttribute(name = "OPEN")
+    public void setOpen(String open) {
+        this.open = open;
+    }
+
+    public String getClose() {
+        return close;
+    }
+
+    @XmlAttribute(name = "CLOSE")
+    public void setClose(String close) {
+        this.close = close;
     }
 }

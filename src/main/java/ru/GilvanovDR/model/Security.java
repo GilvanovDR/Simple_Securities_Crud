@@ -10,24 +10,28 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "SECURITIES")
 public class Security extends AbstractBaseEntity {
+    @Size(max = 765)
+    @Column(name = "REG_NUMBER")
+    protected String regNumber;
+    @Size(max = 765)
+    @Column(name = "NAME", nullable = false)
+    protected String name;
+    @Size(max = 765)
+    @Column(name = "EMITENT_TITLE", nullable = false)
+    protected String emitentTitle;
     @Size(max = 36)
     @Column(name = "SEC_ID", nullable = false)
     String secID;
 
-    @Size(max = 765)
-    @Column(name = "REG_NUMBER")
-    protected String regNumber;
-
-    @Size(max = 765)
-    @Column(name = "NAME", nullable = false)
-    protected String name;
-
-    @Size(max = 765)
-    @Column(name = "EMITENT_TITLE", nullable = false)
-    protected String emitentTitle;
-
     public Security() {
 
+    }
+
+    public Security(XmlSecurity xmlSecurity) {
+        this.secID = xmlSecurity.getSecId();
+        this.regNumber = xmlSecurity.getRegNumber();
+        this.name = xmlSecurity.getName();
+        this.emitentTitle = xmlSecurity.getEmitentTitle();
     }
 
     public String getSecID() {
@@ -60,13 +64,6 @@ public class Security extends AbstractBaseEntity {
 
     public void setEmitentTitle(String emitentTitle) {
         this.emitentTitle = emitentTitle;
-    }
-
-    public Security(XmlSecurity xmlSecurity) {
-        this.secID =xmlSecurity.getSecId();
-        this.regNumber=xmlSecurity.getRegNumber();
-        this.name= xmlSecurity.getName();
-        this.emitentTitle = xmlSecurity.getEmitentTitle();
     }
 
     @Override

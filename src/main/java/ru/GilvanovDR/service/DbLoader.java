@@ -1,33 +1,33 @@
 package ru.GilvanovDR.service;
 
-import org.springframework.data.convert.EntityConverter;
 import org.springframework.stereotype.Service;
-import ru.GilvanovDR.model.Security;
-import ru.GilvanovDR.model.jaxb.XmlSecurity;
 import ru.GilvanovDR.repository.HistoryRepository;
 import ru.GilvanovDR.repository.SecuritiesRepository;
 import ru.GilvanovDR.util.ObjectUtils;
+import ru.GilvanovDR.util.XMLMapper;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Collector;
 
 @Service
 public class DbLoader {
     private HistoryRepository historyRepository;
     private SecuritiesRepository securitiesRepository;
-    private ObjXMLMapper objXMLMapper;
+    private XMLMapper XMLMapper;
 
-    public DbLoader(HistoryRepository historyRepository, SecuritiesRepository securitiesRepository, ObjXMLMapper objXMLMapper) {
+    public DbLoader(HistoryRepository historyRepository, SecuritiesRepository securitiesRepository, XMLMapper XMLMapper) {
         this.historyRepository = historyRepository;
         this.securitiesRepository = securitiesRepository;
-        this.objXMLMapper = objXMLMapper;
+        this.XMLMapper = XMLMapper;
     }
 
-    public boolean SecToDb(String fileName) throws IOException {
-       return securitiesRepository
-                .saveAll(ObjectUtils.getSecurities(objXMLMapper.XmlToSecurity(fileName)));
+    public int SecToDb(String fileName) throws IOException {
+        return securitiesRepository
+                .saveAll(ObjectUtils.getSecurities(XMLMapper.XmlToSecurity(fileName)));
     }
+
+    public int HisToDb(String fileName) throws IOException {
+        return historyRepository.saveAll(ObjectUtils.getHistory(XMLMapper.XmlToHistory(fileName)));
+    }
+
 
 }

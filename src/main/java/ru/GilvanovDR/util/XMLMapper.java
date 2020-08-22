@@ -1,4 +1,4 @@
-package ru.GilvanovDR.service;
+package ru.GilvanovDR.util;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.oxm.Unmarshaller;
@@ -14,11 +14,11 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class ObjXMLMapper{
+public class XMLMapper {
     private final Unmarshaller historyMarshaller;
     private final Unmarshaller securitiesMarshaller;
 
-    public ObjXMLMapper(Unmarshaller historyMarshaller, Unmarshaller securitiesMarshaller) {
+    public XMLMapper(Unmarshaller historyMarshaller, Unmarshaller securitiesMarshaller) {
         this.historyMarshaller = historyMarshaller;
         this.securitiesMarshaller = securitiesMarshaller;
     }

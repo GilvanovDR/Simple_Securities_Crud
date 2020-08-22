@@ -13,9 +13,17 @@ public class XmlSecurity {
 
     protected String emitentTitle;
 
+    public String getSecId() {
+        return secId;
+    }
+
     @XmlAttribute(name = "secid")
     public void setSecId(String secId) {
         this.secId = secId;
+    }
+
+    public String getRegNumber() {
+        return regNumber;
     }
 
     @XmlAttribute(name = "regnumber")
@@ -23,30 +31,22 @@ public class XmlSecurity {
         this.regNumber = regNumber;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @XmlAttribute(name = "name")
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getEmitentTitle() {
+        return emitentTitle;
+    }
+
     @XmlAttribute(name = "emitent_title")
     public void setEmitentTitle(String emitentTitle) {
         this.emitentTitle = emitentTitle;
-    }
-
-    public String getSecId() {
-        return secId;
-    }
-
-    public String getRegNumber() {
-        return regNumber;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmitentTitle() {
-        return emitentTitle;
     }
 
     @Override

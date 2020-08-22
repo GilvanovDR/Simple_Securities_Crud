@@ -1,11 +1,15 @@
 package ru.GilvanovDR.repository.dataJpa;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 import ru.GilvanovDR.model.HistoryElement;
 import ru.GilvanovDR.model.Security;
 import ru.GilvanovDR.repository.HistoryRepository;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class HistoryRepositoryImpl implements HistoryRepository {
@@ -17,14 +21,10 @@ public class HistoryRepositoryImpl implements HistoryRepository {
         this.historyRepository = historyRepository;
     }
 
-    @Override
-    public List<HistoryElement> getAllBySecId(String secId) {
-        return historyRepository.getAllBySecurityOrderByTradeDateDesc(secId);
-    }
-
+    @Transactional
     @Override
     public List<HistoryElement> getAll() {
-        return historyRepository.findAll();
+        return historyRepository.getAll();
     }
 
     @Override
@@ -39,15 +39,33 @@ public class HistoryRepositoryImpl implements HistoryRepository {
 
     @Override
     public HistoryElement save(HistoryElement historyElement, String secId) {
-        if (!historyElement.isNew() && get(historyElement.getId()) == null) {
-            return null;
-        }
+
         Security security = securitiesRepository.getBySecID(secId);
         //Add scheduler to pars from http://iss.moex.com/iss/securities.xml?q=SEARCH_STRING
         if (security == null) {
             return null;
         }
         historyElement.setSecurity(security);
+        if (historyElement.isNew() && isExist(historyElement)) {
+            return null;
+        }
+        historyElement.setSecurity(security);
         return historyRepository.save(historyElement);
+    }
+
+    private boolean isExist(HistoryElement historyElement) {
+        int secId = historyElement.getSecurity().getId();
+        LocalDate tradeDate = historyElement.getTradeDate();
+        Double numTrades = historyElement.getNumTrades();
+        return historyRepository.getExist(secId,tradeDate,numTrades).size() > 0;
+    }
+
+    @Override
+    public int saveAll(Map<HistoryElement, String> history) {
+        int count = 0;
+        for (Map.Entry<HistoryElement, String> entry : history.entrySet()) {
+            count += save(entry.getKey(), entry.getValue()) == null ? 1 : 0;
+        }
+        return count;
     }
 }

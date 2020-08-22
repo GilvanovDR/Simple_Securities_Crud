@@ -23,7 +23,7 @@
         </property>
     </bean>
 
-    <bean id="objXmlMapper" class="ru.GilvanovDR.service.ObjXMLMapper">
+    <bean id="objXmlMapper" class="ru.GilvanovDR.util.XMLMapper">
         <constructor-arg name="historyMarshaller" ref="historyMarshaller"/>
         <constructor-arg name="securitiesMarshaller" ref="securitiesMarshaller"/>
     </bean>

@@ -13,7 +13,7 @@ public interface SecuritiesRepository {
 
     boolean delete(int secId);
 
-    boolean saveAll(List<Security> securities);
+    int saveAll(List<Security> securities);
 
     Security save(Security security);
 }
