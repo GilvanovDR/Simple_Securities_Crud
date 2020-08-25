@@ -16,12 +16,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class DbLoader {
+public class DbUploader {
     private final HistoryRepository historyRepository;
     private final SecuritiesRepository securitiesRepository;
     private final XMLMapper xmlMapper;
 
-    public DbLoader(HistoryRepository historyRepository, SecuritiesRepository securitiesRepository, XMLMapper xmlMapper) {
+    public DbUploader(HistoryRepository historyRepository, SecuritiesRepository securitiesRepository, XMLMapper xmlMapper) {
         this.historyRepository = historyRepository;
         this.securitiesRepository = securitiesRepository;
         this.xmlMapper = xmlMapper;

@@ -2,18 +2,16 @@ package ru.GilvanovDR;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 import ru.GilvanovDR.repository.SecuritiesRepository;
-import ru.GilvanovDR.service.DbLoader;
+import ru.GilvanovDR.service.DbUploader;
 
-import java.io.IOException;
-
-public class TestJaxb {
+public class Test {
     public static void main(String[] args) {
         try (GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext()) {
             appCtx.load("spring/spring-db.xml", "spring/spring-app.xml");
             appCtx.refresh();
             //XMLMapper objXMLMapper = appCtx.getBean("objXmlMapper", XMLMapper.class);
             //objXMLMapper.XmlToSecurity("XML/securities_1.xml").forEach(System.out::println);
-            DbLoader dbLoader = appCtx.getBean(DbLoader.class);
+            DbUploader dbUploader = appCtx.getBean(DbUploader.class);
             //objXMLMapper.XmlToHistory("XML/history_2.xml").forEach(System.out::println);
             //System.out.println(dbLoader.uploadFromFolder("XML"));
             SecuritiesRepository securitiesRepository = appCtx.getBean(SecuritiesRepository.class);

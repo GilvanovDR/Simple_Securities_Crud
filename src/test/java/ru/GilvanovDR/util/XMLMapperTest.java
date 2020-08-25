@@ -1,10 +1,8 @@
 package ru.GilvanovDR.util;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import ru.GilvanovDR.TimingExtension;
+import ru.GilvanovDR.AbstractTest;
 import ru.GilvanovDR.model.jaxb.XmlHistory;
 import ru.GilvanovDR.model.jaxb.XmlSecurity;
 import ru.GilvanovDR.util.exception.NotFoundException;
@@ -14,12 +12,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringJUnitConfig(locations = {
-        "classpath:spring/spring-app.xml",
-        "classpath:spring/spring-db.xml"
-})
-@ExtendWith(TimingExtension.class)
-class XMLMapperTest {
+
+class XMLMapperTest extends AbstractTest {
     @Autowired
     protected XMLMapper mapper;
 
