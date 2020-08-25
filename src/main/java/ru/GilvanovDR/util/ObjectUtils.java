@@ -7,8 +7,6 @@ import ru.GilvanovDR.model.jaxb.XmlSecurity;
 
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class ObjectUtils {
@@ -25,7 +23,8 @@ public class ObjectUtils {
                 .map(ObjectUtils::createSecurity)
                 .collect(Collectors.toList());
     }
-    public static Map<HistoryElement,String> getHistory(List<XmlHistory> xmlHistories) {
+
+    public static Map<HistoryElement, String> getHistory(List<XmlHistory> xmlHistories) {
         return xmlHistories.stream().collect(Collectors.toMap(ObjectUtils::createHistory
                 , XmlHistory::getSecId));
     }

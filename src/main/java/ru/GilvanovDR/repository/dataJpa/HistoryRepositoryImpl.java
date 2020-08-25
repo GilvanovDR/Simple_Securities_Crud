@@ -2,7 +2,6 @@ package ru.GilvanovDR.repository.dataJpa;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 import ru.GilvanovDR.model.HistoryElement;
 import ru.GilvanovDR.model.Security;
 import ru.GilvanovDR.repository.HistoryRepository;
@@ -10,6 +9,7 @@ import ru.GilvanovDR.repository.HistoryRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Repository
 public class HistoryRepositoryImpl implements HistoryRepository {
@@ -54,10 +54,10 @@ public class HistoryRepositoryImpl implements HistoryRepository {
     }
 
     private boolean isExist(HistoryElement historyElement) {
-        int secId = historyElement.getSecurity().getId();
+        int secId = /*Objects.requireNonNull(*/historyElement.getSecurity().getId();
         LocalDate tradeDate = historyElement.getTradeDate();
         Double numTrades = historyElement.getNumTrades();
-        return historyRepository.getExist(secId,tradeDate,numTrades).size() > 0;
+        return historyRepository.getExist(secId, tradeDate, numTrades).size() > 0;
     }
 
     @Override

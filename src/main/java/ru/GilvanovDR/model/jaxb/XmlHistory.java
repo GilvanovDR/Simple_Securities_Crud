@@ -9,6 +9,41 @@ public class XmlHistory {
     protected String open;
     protected String close;
 
+    public XmlHistory(String secId, String tradeDate, String numTrades, String open, String close) {
+        this.secId = secId;
+        this.tradeDate = tradeDate;
+        this.numTrades = numTrades;
+        this.open = open;
+        this.close = close;
+    }
+
+    public XmlHistory() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        XmlHistory that = (XmlHistory) o;
+
+        if (!secId.equals(that.secId)) return false;
+        if (!tradeDate.equals(that.tradeDate)) return false;
+        if (!numTrades.equals(that.numTrades)) return false;
+        if (open != null ? !open.equals(that.open) : that.open != null) return false;
+        return close != null ? close.equals(that.close) : that.close == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = secId.hashCode();
+        result = 31 * result + tradeDate.hashCode();
+        result = 31 * result + numTrades.hashCode();
+        result = 31 * result + (open != null ? open.hashCode() : 0);
+        result = 31 * result + (close != null ? close.hashCode() : 0);
+        return result;
+    }
+
     @Override
     public String toString() {
         return "XmlHistory{" +
@@ -64,4 +99,5 @@ public class XmlHistory {
     public void setClose(String close) {
         this.close = close;
     }
+
 }

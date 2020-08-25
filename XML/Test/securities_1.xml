@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+<data id="securities">
+<metadata>
+<columns>
+<column name="id" type="int32" />
+<column name="secid" type="string" bytes="36" max_size="0" />
+<column name="shortname" type="string" bytes="189" max_size="0" />
+<column name="regnumber" type="string" bytes="189" max_size="0" />
+<column name="name" type="string" bytes="765" max_size="0" />
+<column name="isin" type="string" bytes="765" max_size="0" />
+<column name="is_traded" type="int32" />
+<column name="emitent_id" type="int32" />
+<column name="emitent_title" type="string" bytes="765" max_size="0" />
+<column name="emitent_inn" type="string" bytes="30" max_size="0" />
+<column name="emitent_okpo" type="string" bytes="24" max_size="0" />
+<column name="gosreg" type="string" bytes="189" max_size="0" />
+<column name="type" type="string" bytes="93" max_size="0" />
+<column name="group" type="string" bytes="93" max_size="0" />
+<column name="primary_boardid" type="string" bytes="12" max_size="0" />
+<column name="marketprice_boardid" type="string" bytes="12" max_size="0" />
+</columns>
+</metadata>
+<rows>
+<row id="154676" secid="AAPL" shortname="Apple" regnumber="" name="Apple Inc." isin="US0378331005" is_traded="1" emitent_id="1281003" emitent_title="Apple Inc" emitent_inn="" emitent_okpo="" gosreg="" type="common_share" group="stock_shares" primary_boardid="EQRD" marketprice_boardid="" />
+<row id="12441" secid="ABRD" shortname="АбрауДюрсо" regnumber="1-02-12500-A" name="Абрау-Дюрсо ПАО ао" isin="RU000A0JS5T7" is_traded="1" emitent_id="2556" emitent_title="Публичное акционерное общество &quot;Абрау – Дюрсо&quot;" emitent_inn="7727620673" emitent_okpo="81521198" gosreg="1-02-12500-A" type="common_share" group="stock_shares" primary_boardid="TQBR" marketprice_boardid="TQBR" />
+<row id="131568" secid="ACKO" shortname="АСКО ао" regnumber="1-01-52065-Z" name="АСКО-СТРАХОВАНИЕ ПАО ао" isin="RU000A0JXS91" is_traded="1" emitent_id="1098705" emitent_title="Публичное акционерное общество &quot;АСКО-СТРАХОВАНИЕ&quot;" emitent_inn="7453297458" emitent_okpo="31212003" gosreg="1-01-52065-Z" type="common_share" group="stock_shares" primary_boardid="TQDE" marketprice_boardid="TQDE" />
+<row id="85909" secid="acru" shortname="ОАО АК &quot;Рубин&quot;" regnumber="1-03-01692-A" name="Открытое акционерное общество &quot;Авиационная корпорация &quot;Рубин&quot;" isin="RU000A0JRM20" is_traded="1" emitent_id="486957" emitent_title="публичное акционерное общество &quot;Авиационная корпорация &quot;Рубин&quot;" emitent_inn="5001000034" emitent_okpo="" gosreg="1-03-01692-A" type="common_share" group="stock_shares" primary_boardid="MXBD" marketprice_boardid="" />
+<row id="2699" secid="AFKS" shortname="Система ао" regnumber="1-05-01669-A" name="АФК &quot;Система&quot; ПАО ао" isin="RU000A0DQZE3" is_traded="1" emitent_id="2046" emitent_title="ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО &quot;АКЦИОНЕРНАЯ ФИНАНСОВАЯ КОРПОРАЦИЯ &quot;СИСТЕМА&quot;" emitent_inn="7703104630" emitent_okpo="27987276" gosreg="1-05-01669-A" type="common_share" group="stock_shares" primary_boardid="TQBR" marketprice_boardid="TQBR" />
+<row id="2700" secid="AFLT" shortname="Аэрофлот" regnumber="1-01-00010-A" name="Аэрофлот-росс.авиалин(ПАО)ао" isin="RU0009062285" is_traded="1" emitent_id="1300" emitent_title="Публичное акционерное общество &quot;Аэрофлот – российские авиалинии&quot;" emitent_inn="7712040126" emitent_okpo="29063984" gosreg="1-01-00010-A" type="common_share" group="stock_shares" primary_boardid="TQBR" marketprice_boardid="TQBR" />
+<row id="212232577" secid="AFM0" shortname="AFLT-6.20" regnumber="" name="Фьючерсный контракт AFLT-6.20" isin="" is_traded="1" emitent_id="1300" emitent_title="Публичное акционерное общество &quot;Аэрофлот – российские авиалинии&quot;" emitent_inn="7712040126" emitent_okpo="29063984" gosreg="" type="futures" group="futures_forts" primary_boardid="RFUD" marketprice_boardid="" />
+<row id="85916" secid="afmc" shortname="АО &quot;Агрофирма Мценская&quot;" regnumber="1-01-40534-A" name="Акционерное общество &quot;Агрофирма Мценская&quot;" isin="RU000A0JRAA9" is_traded="1" emitent_id="486951" emitent_title="Акционерное общество &quot;Агрофирма Мценская&quot;" emitent_inn="5717060059" emitent_okpo="" gosreg="1-01-40534-A" type="common_share" group="stock_shares" primary_boardid="MXBD" marketprice_boardid="" />
+<row id="292308367" secid="AFU0" shortname="AFLT-9.20" regnumber="" name="Фьючерсный контракт AFLT-9.20" isin="" is_traded="1" emitent_id="1300" emitent_title="Публичное акционерное общество &quot;Аэрофлот – российские авиалинии&quot;" emitent_inn="7712040126" emitent_okpo="29063984" gosreg="" type="futures" group="futures_forts" primary_boardid="RFUD" marketprice_boardid="" />
+<row id="76079" secid="AGRO" shortname="AGRO-гдр" regnumber="" name="ГДР ROS AGRO PLC ORD SHS" isin="US7496552057" is_traded="1" emitent_id="11660" emitent_title="Bank of New York Mellon Corporation (Глобальные депозитарные расписки на акции ROS AGRO PLC)" emitent_inn="0000003817" emitent_okpo="" gosreg="" type="depositary_receipt" group="stock_dr" primary_boardid="TQBR" marketprice_boardid="TQBR" />
+</rows>
+</data>
+</document>

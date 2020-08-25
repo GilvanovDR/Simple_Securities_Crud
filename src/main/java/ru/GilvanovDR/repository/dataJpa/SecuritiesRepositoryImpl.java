@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.GilvanovDR.model.Security;
 import ru.GilvanovDR.repository.SecuritiesRepository;
 
-import java.util.Iterator;
 import java.util.List;
 
 @Repository
@@ -35,7 +34,7 @@ public class SecuritiesRepositoryImpl implements SecuritiesRepository {
 
     @Override
     public boolean delete(int securityId) {
-        return securitiesRepository.delete(securityId)!=0;
+        return securitiesRepository.delete(securityId) != 0;
     }
 
     @Transactional
