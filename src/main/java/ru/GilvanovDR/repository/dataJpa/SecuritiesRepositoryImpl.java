@@ -48,6 +48,7 @@ public class SecuritiesRepositoryImpl implements SecuritiesRepository {
 
     @Transactional
     @Override
+    //fixme use save (saveAll d't test double secId from input list and empty secId)
     public int saveAll(List<Security> securities) {
         int counter = securities.size();
         securities.removeIf(security -> securitiesRepository.getBySecID(security.getSecID()) != null);

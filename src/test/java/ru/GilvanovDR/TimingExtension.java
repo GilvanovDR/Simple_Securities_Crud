@@ -13,12 +13,12 @@ public class TimingExtension implements
     private StopWatch stopWatch;
 
     @Override
-    public void beforeAll(ExtensionContext extensionContext){
+    public void beforeAll(ExtensionContext extensionContext) {
         stopWatch = new StopWatch("Execution time of " + extensionContext.getRequiredTestClass().getSimpleName());
     }
 
     @Override
-    public void beforeTestExecution(ExtensionContext extensionContext){
+    public void beforeTestExecution(ExtensionContext extensionContext) {
         String testName = extensionContext.getDisplayName();
         log.info("\nStart " + testName);
         stopWatch.start(testName);
@@ -30,7 +30,7 @@ public class TimingExtension implements
     }
 
     @Override
-    public void afterAll(ExtensionContext extensionContext){
+    public void afterAll(ExtensionContext extensionContext) {
         log.info('\n' + stopWatch.prettyPrint() + '\n');
     }
 }

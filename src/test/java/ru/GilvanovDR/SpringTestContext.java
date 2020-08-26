@@ -4,7 +4,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import ru.GilvanovDR.repository.SecuritiesRepository;
 import ru.GilvanovDR.service.DbUploader;
 
-public class Test {
+public class SpringTestContext {
     public static void main(String[] args) {
         try (GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext()) {
             appCtx.load("spring/spring-db.xml", "spring/spring-app.xml");
