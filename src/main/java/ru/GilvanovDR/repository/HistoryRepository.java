@@ -1,6 +1,6 @@
 package ru.GilvanovDR.repository;
 
-import ru.GilvanovDR.model.HistoryElement;
+import ru.GilvanovDR.model.History;
 
 import java.util.List;
 import java.util.Map;
@@ -8,13 +8,13 @@ import java.util.Map;
 
 public interface HistoryRepository {
 
-    List<HistoryElement> getAll();
+    List<History> getAll();
 
-    HistoryElement get(int id);
+    History get(int id);
 
     boolean delete(int id);
 
-    HistoryElement save(HistoryElement historyElement, String secId);
+    History save(History history, String secId);
 
-    int saveAll(Map<HistoryElement, String> history);
+    int saveAll(Map<History, String> history);
 }

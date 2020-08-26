@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "HISTORY")
-public class HistoryElement extends AbstractBaseEntity {
+public class History extends AbstractBaseEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "SEC_ID", nullable = false)
@@ -24,10 +24,10 @@ public class HistoryElement extends AbstractBaseEntity {
     @Column(name = "CLOSE")
     protected Double close;
 
-    public HistoryElement() {
+    public History() {
     }
 
-    public HistoryElement(XmlHistory xmlHistory) {
+    public History(XmlHistory xmlHistory) {
         try {
             this.tradeDate = LocalDate.parse(xmlHistory.getTradeDate());
             this.numTrades = !"".equals(xmlHistory.getNumTrades()) ? Double.parseDouble(xmlHistory.getNumTrades()) : null;
@@ -80,7 +80,7 @@ public class HistoryElement extends AbstractBaseEntity {
 
     @Override
     public String toString() {
-        return "HistoryElement{" +
+        return "History{" +
                 "security=" + security +
                 ", tradeDate=" + tradeDate +
                 ", numTrades=" + numTrades +

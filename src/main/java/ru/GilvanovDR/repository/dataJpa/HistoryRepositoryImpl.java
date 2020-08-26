@@ -3,14 +3,13 @@ package ru.GilvanovDR.repository.dataJpa;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import ru.GilvanovDR.model.HistoryElement;
+import ru.GilvanovDR.model.History;
 import ru.GilvanovDR.model.Security;
 import ru.GilvanovDR.repository.HistoryRepository;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Repository
 public class HistoryRepositoryImpl implements HistoryRepository {
@@ -24,12 +23,12 @@ public class HistoryRepositoryImpl implements HistoryRepository {
 
     @Transactional
     @Override
-    public List<HistoryElement> getAll() {
+    public List<History> getAll() {
         return historyRepository.getAll();
     }
 
     @Override
-    public HistoryElement get(int id) {
+    public History get(int id) {
         return historyRepository.findById(id).orElse(null);
     }
 
@@ -39,33 +38,33 @@ public class HistoryRepositoryImpl implements HistoryRepository {
     }
 
     @Override
-    public HistoryElement save(HistoryElement historyElement, String secId) {
+    public History save(History history, String secId) {
 
         Security security = securitiesRepository.getBySecID(secId);
         //Add scheduler to pars from http://iss.moex.com/iss/securities.xml?q=SEARCH_STRING
         if (security == null) {
             return null;
         }
-        historyElement.setSecurity(security);
-        if (historyElement.isNew() && isExist(historyElement)) {
+        history.setSecurity(security);
+        if (history.isNew() && isExist(history)) {
             return null;
         }
-        historyElement.setSecurity(security);
-        return historyRepository.save(historyElement);
+        history.setSecurity(security);
+        return historyRepository.save(history);
     }
 
-    private boolean isExist(HistoryElement historyElement) {
-        Assert.notNull(historyElement,"history must not be null");
-        int secId = historyElement.getSecurity().getId();
-        LocalDate tradeDate = historyElement.getTradeDate();
-        Double numTrades = historyElement.getNumTrades();
+    private boolean isExist(History history) {
+        Assert.notNull(history,"history must not be null");
+        int secId = history.getSecurity().getId();
+        LocalDate tradeDate = history.getTradeDate();
+        Double numTrades = history.getNumTrades();
         return historyRepository.getExist(secId, tradeDate, numTrades).size() > 0;
     }
 
     @Override
-    public int saveAll(Map<HistoryElement, String> history) {
+    public int saveAll(Map<History, String> history) {
         int count = 0;
-        for (Map.Entry<HistoryElement, String> entry : history.entrySet()) {
+        for (Map.Entry<History, String> entry : history.entrySet()) {
             count += save(entry.getKey(), entry.getValue()) == null ? 1 : 0;
         }
         return count;

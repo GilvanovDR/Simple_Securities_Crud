@@ -2,7 +2,7 @@ package ru.GilvanovDR.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import ru.GilvanovDR.model.HistoryElement;
+import ru.GilvanovDR.model.History;
 import ru.GilvanovDR.repository.HistoryRepository;
 
 import java.util.List;
@@ -18,25 +18,25 @@ public class HistoryService {
         this.historyRepository = historyRepository;
     }
 
-    public HistoryElement create(HistoryElement historyElement, String secId) {
-        Assert.notNull(historyElement, "history must not be null");
-        return historyRepository.save(historyElement, secId);
+    public History create(History history, String secId) {
+        Assert.notNull(history, "history must not be null");
+        return historyRepository.save(history, secId);
     }
 
     public void delete(int id) {
         checkNotFoundWithId(historyRepository.delete(id), id);
     }
 
-    public HistoryElement get(int id) {
+    public History get(int id) {
         return checkNotFoundWithId(historyRepository.get(id), id);
     }
 
-    public List<HistoryElement> getAll() {
+    public List<History> getAll() {
         return historyRepository.getAll();
     }
 
-    public void update(HistoryElement historyElement, String secId) {
-        Assert.notNull(historyElement, "history must not be null");
-        checkNotFoundWithId(historyRepository.save(historyElement, secId), historyElement.id());
+    public void update(History history, String secId) {
+        Assert.notNull(history, "history must not be null");
+        checkNotFoundWithId(historyRepository.save(history, secId), history.id());
     }
 }
