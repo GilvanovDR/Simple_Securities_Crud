@@ -21,7 +21,7 @@ public class HistoryService {
 
     public History create(History history, String secId) {
         Assert.notNull(history, "history must not be null");
-        return  checkNotFound(historyRepository.save(history, secId),"SecId");
+        return checkNotFound(historyRepository.save(history, secId), "SecId");
     }
 
     public void delete(int id) {

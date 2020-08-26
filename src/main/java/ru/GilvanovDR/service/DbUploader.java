@@ -32,7 +32,7 @@ public class DbUploader {
                 .saveAll(ObjectUtils.getSecurities(xmlMapper.XmlToSecurity(fileName)));
     }
 
-    public int hisToDb(String fileName){
+    public int hisToDb(String fileName) {
         return historyRepository.saveAll(ObjectUtils.getHistory(xmlMapper.XmlToHistory(fileName)));
     }
 

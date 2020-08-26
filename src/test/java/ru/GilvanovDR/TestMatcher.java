@@ -1,9 +1,5 @@
 package ru.GilvanovDR;
 
-import org.springframework.test.web.servlet.ResultMatcher;
-
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestMatcher<T> {
@@ -33,10 +29,6 @@ public class TestMatcher<T> {
         }
     }
 
-    public void assertMatch(Iterable<T> actual, T... expected) {
-        assertMatch(actual, List.of(expected));
-    }
-
     public void assertMatch(Iterable<T> actual, Iterable<T> expected) {
         if (usingEquals) {
             assertThat(actual).isEqualTo(expected);
@@ -44,16 +36,20 @@ public class TestMatcher<T> {
             assertThat(actual).usingElementComparatorIgnoringFields(fieldsToIgnore).isEqualTo(expected);
         }
     }
-/*
-    public ResultMatcher contentJson(T expected) {
-        return result -> assertMatch(TestUtil.readFromJsonMvcResult(result, clazz), expected);
-    }
+    /*
+        public ResultMatcher contentJson(T expected) {
+            return result -> assertMatch(TestUtil.readFromJsonMvcResult(result, clazz), expected);
+        }
 
-    public ResultMatcher contentJson(T... expected) {
-        return contentJson(List.of(expected));
-    }
+        public ResultMatcher contentJson(T... expected) {
+            return contentJson(List.of(expected));
+        }
 
-    public ResultMatcher contentJson(Iterable<T> expected) {
-        return result -> assertMatch(readListFromJsonMvcResult(result, clazz), expected);
-    }*/
+        public ResultMatcher contentJson(Iterable<T> expected) {
+            return result -> assertMatch(readListFromJsonMvcResult(result, clazz), expected);
+        }
+       public void assertMatch(Iterable<T> actual, T... expected) {
+            assertMatch(actual, List.of(expected));
+        }*/
+
 }

@@ -37,17 +37,18 @@ public class History extends AbstractBaseEntity {
             throw new NotFoundException(e.getMessage() + " " + xmlHistory.toString());
         }
     }
+
     public History(Security security, LocalDate tradeDate, Integer numTrades, Double open, Double close, Integer id) {
-       super(id);
-       this.security = security;
-       this.tradeDate = tradeDate;
-       this.numTrades = numTrades;
-       this.open = open;
-       this.close = close;
+        super(id);
+        this.security = security;
+        this.tradeDate = tradeDate;
+        this.numTrades = numTrades;
+        this.open = open;
+        this.close = close;
     }
 
     public History(Security security, LocalDate tradeDate, Integer numTrades, Double open, Double close) {
-        this(security,tradeDate,numTrades,open,close,null);
+        this(security, tradeDate, numTrades, open, close, null);
     }
 
     public Security getSecurity() {

@@ -7,15 +7,10 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import ru.GilvanovDR.AbstractTest;
 import ru.GilvanovDR.model.History;
-import ru.GilvanovDR.model.Security;
 import ru.GilvanovDR.util.exception.NotFoundException;
-
-import java.sql.SQLOutput;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.GilvanovDR.HistoryTestData.*;
-import static ru.GilvanovDR.TestData.HISTORY_PATH;
-import static ru.GilvanovDR.TestData.SECURITIES_PATH;
 
 @Sql(scripts = "classpath:db/clearDB.sql", config = @SqlConfig(encoding = "UTF-8"))
 class HistoryServiceTest extends AbstractTest {
@@ -60,6 +55,7 @@ class HistoryServiceTest extends AbstractTest {
         historyService.delete(HISTORY1_ID);
         assertThrows(NotFoundException.class, () -> historyService.get(HISTORY1_ID));
     }
+
     @Test
     void deleteNotFound() {
         assertThrows(NotFoundException.class, () -> historyService.delete(NOT_FOUND));
@@ -75,10 +71,11 @@ class HistoryServiceTest extends AbstractTest {
     void getNotFound() {
         assertThrows(NotFoundException.class, () -> historyService.get(NOT_FOUND));
     }
+
     @Test
     void update() {
         History history = getUpdated();
-        historyService.update(history,HISTORY1_SEC_ID);
+        historyService.update(history, HISTORY1_SEC_ID);
         HISTORY_MATCHER.assertMatch(historyService.get(HISTORY1_ID), history);
     }
 }

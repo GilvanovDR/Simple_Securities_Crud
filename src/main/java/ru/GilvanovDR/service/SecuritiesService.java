@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import ru.GilvanovDR.model.Security;
 import ru.GilvanovDR.repository.SecuritiesRepository;
-import ru.GilvanovDR.repository.dataJpa.SecuritiesRepositoryImpl;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class SecuritiesService {
 
     public Security create(Security security) {
         Assert.notNull(security, "security must not be null");
-        return checkNotFound(securitiesRepository.save(security),"Duplicate SecID");
+        return checkNotFound(securitiesRepository.save(security), "Duplicate SecID");
     }
 
     public void delete(int id) {
@@ -31,8 +30,9 @@ public class SecuritiesService {
     public Security get(int id) {
         return checkNotFoundWithId(securitiesRepository.get(id), id);
     }
+
     public Security getBySecId(String secId) {
-        return checkNotFound(securitiesRepository.getBySecID(secId),"SecId is not Exist");
+        return checkNotFound(securitiesRepository.getBySecID(secId), "SecId is not Exist");
     }
 
     public List<Security> getAll() {

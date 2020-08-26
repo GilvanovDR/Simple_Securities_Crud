@@ -11,7 +11,7 @@ import ru.GilvanovDR.util.exception.NotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.GilvanovDR.SecurityTestData.*;
-import static ru.GilvanovDR.TestData.SECURITIES_PATH;
+
 
 @Sql(scripts = "classpath:db/clearDB.sql", config = @SqlConfig(encoding = "UTF-8"))
 class SecuritiesServiceTest extends AbstractTest {
@@ -73,9 +73,10 @@ class SecuritiesServiceTest extends AbstractTest {
     void getBySecId() {
         SECURITY_MATCHER.assertMatch(securitiesService.getBySecId(SECURITY1.getSecID()), SECURITY1);
     }
+
     @Test
     void getByNotExistSecId() {
-        assertThrows(NotFoundException.class, () ->securitiesService.getBySecId(NOT_EXIST_SECURITY_ID));
+        assertThrows(NotFoundException.class, () -> securitiesService.getBySecId(NOT_EXIST_SECURITY_ID));
     }
 
 

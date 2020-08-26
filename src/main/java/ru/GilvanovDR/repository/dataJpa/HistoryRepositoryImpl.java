@@ -54,7 +54,7 @@ public class HistoryRepositoryImpl implements HistoryRepository {
     }
 
     private boolean isExist(History history) {
-        Assert.notNull(history,"history must not be null");
+        Assert.notNull(history, "history must not be null");
         int secId = history.getSecurity().getId();
         LocalDate tradeDate = history.getTradeDate();
         Integer numTrades = history.getNumTrades();

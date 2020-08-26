@@ -11,7 +11,6 @@ import ru.GilvanovDR.util.exception.NotFoundException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static ru.GilvanovDR.TestData.*;
 
 @Sql(scripts = "classpath:db/clearDB.sql", config = @SqlConfig(encoding = "UTF-8"))
 class DbUploaderTest extends AbstractTest {
