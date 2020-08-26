@@ -33,7 +33,6 @@ class SecuritiesServiceTest extends AbstractTest {
         newSecurity.setId(newId);
         SECURITY_MATCHER.assertMatch(created, newSecurity);
         SECURITY_MATCHER.assertMatch(securitiesService.get(newId), newSecurity);
-
     }
 
     @Test

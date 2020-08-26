@@ -18,7 +18,7 @@ public class History extends AbstractBaseEntity {
     @Column(name = "TRADE_DATE", nullable = false)
     protected LocalDate tradeDate;
     @Column(name = "NUM_TRADES")
-    protected Double numTrades;
+    protected Integer numTrades;
     @Column(name = "OPEN")
     protected Double open;
     @Column(name = "CLOSE")
@@ -30,12 +30,24 @@ public class History extends AbstractBaseEntity {
     public History(XmlHistory xmlHistory) {
         try {
             this.tradeDate = LocalDate.parse(xmlHistory.getTradeDate());
-            this.numTrades = !"".equals(xmlHistory.getNumTrades()) ? Double.parseDouble(xmlHistory.getNumTrades()) : null;
+            this.numTrades = !"".equals(xmlHistory.getNumTrades()) ? Integer.parseInt(xmlHistory.getNumTrades()) : null;
             this.open = !"".equals(xmlHistory.getOpen()) ? Double.parseDouble(xmlHistory.getOpen()) : null;
             this.close = !"".equals(xmlHistory.getClose()) ? Double.parseDouble(xmlHistory.getClose()) : null;
         } catch (Exception e) {
             throw new NotFoundException(e.getMessage() + " " + xmlHistory.toString());
         }
+    }
+    public History(Security security, LocalDate tradeDate, Integer numTrades, Double open, Double close, Integer id) {
+       super(id);
+       this.security = security;
+       this.tradeDate = tradeDate;
+       this.numTrades = numTrades;
+       this.open = open;
+       this.close = close;
+    }
+
+    public History(Security security, LocalDate tradeDate, Integer numTrades, Double open, Double close) {
+        this(security,tradeDate,numTrades,open,close,null);
     }
 
     public Security getSecurity() {
@@ -54,11 +66,11 @@ public class History extends AbstractBaseEntity {
         this.tradeDate = tradeDate;
     }
 
-    public Double getNumTrades() {
+    public Integer getNumTrades() {
         return numTrades;
     }
 
-    public void setNumTrades(Double numTrades) {
+    public void setNumTrades(Integer numTrades) {
         this.numTrades = numTrades;
     }
 

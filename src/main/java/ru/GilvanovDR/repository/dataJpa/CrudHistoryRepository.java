@@ -21,5 +21,5 @@ public interface CrudHistoryRepository extends JpaRepository<History, Integer> {
     List<History> getAll();
 
     @Query("SELECT e FROM History e WHERE e.security.id=:secId and e.tradeDate=:tradeDate and e.numTrades=:numTrades")
-    List<History> getExist(@Param("secId") int secId, @Param("tradeDate") LocalDate tradeDate, @Param("numTrades") Double numTrades);
+    List<History> getExist(@Param("secId") int secId, @Param("tradeDate") LocalDate tradeDate, @Param("numTrades") Integer numTrades);
 }

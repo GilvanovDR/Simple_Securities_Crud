@@ -7,6 +7,7 @@ import ru.GilvanovDR.repository.HistoryRepository;
 
 import java.util.List;
 
+import static ru.GilvanovDR.util.ValidationUtil.checkNotFound;
 import static ru.GilvanovDR.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
@@ -20,7 +21,7 @@ public class HistoryService {
 
     public History create(History history, String secId) {
         Assert.notNull(history, "history must not be null");
-        return historyRepository.save(history, secId);
+        return  checkNotFound(historyRepository.save(history, secId),"SecId");
     }
 
     public void delete(int id) {
