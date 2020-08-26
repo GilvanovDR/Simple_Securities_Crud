@@ -5,6 +5,7 @@ import ru.GilvanovDR.model.jaxb.XmlSecurity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -20,11 +21,24 @@ public class Security extends AbstractBaseEntity {
     @Column(name = "EMITENT_TITLE", nullable = false)
     protected String emitentTitle;
     @Size(max = 36)
+    @NotBlank
     @Column(name = "SEC_ID", nullable = false)
     String secID;
 
     public Security() {
 
+    }
+
+    public Security(String secID, String regNumber, String name, String emitentTitle, Integer id) {
+        super(id);
+        this.secID = secID;
+        this.regNumber = regNumber;
+        this.name = name;
+        this.emitentTitle = emitentTitle;
+    }
+
+    public Security(String secID, String regNumber, String name, String emitentTitle) {
+        this(secID, regNumber, name, emitentTitle, null);
     }
 
     public Security(XmlSecurity xmlSecurity) {
