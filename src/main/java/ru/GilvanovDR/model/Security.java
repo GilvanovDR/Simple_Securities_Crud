@@ -14,12 +14,15 @@ public class Security extends AbstractBaseEntity {
     @Size(max = 765)
     @Column(name = "REG_NUMBER")
     protected String regNumber;
+
     @Size(max = 765)
     @Column(name = "NAME", nullable = false)
     protected String name;
+
     @Size(max = 765)
     @Column(name = "EMITENT_TITLE", nullable = false)
     protected String emitentTitle;
+
     @Size(max = 36)
     @NotBlank
     @Column(name = "SEC_ID", nullable = false)
