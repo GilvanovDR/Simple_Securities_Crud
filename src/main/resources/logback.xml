@@ -21,7 +21,7 @@
     </appender>
 
     <logger name="ru.GilvanovDR" level="debug"/>
-    <!--<logger name="org.springframework.web.servlet" level="debug"/>-->
+    <logger name="org.springframework.web.servlet" level="debug"/>
     <logger name="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver" level="debug"/>
     <logger name="org.springframework.oxm.jaxb.Jaxb2Marshaller" level="debug"/>
 
