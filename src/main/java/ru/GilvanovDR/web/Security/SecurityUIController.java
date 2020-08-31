@@ -1,16 +1,16 @@
 package ru.GilvanovDR.web.Security;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import ru.GilvanovDR.model.Security;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
-@RestController
+@Controller
 @RequestMapping("/security")
 public class SecurityUIController extends AbstractSecurityController {
 
@@ -43,6 +43,7 @@ public class SecurityUIController extends AbstractSecurityController {
         if (request.getParameter("id").isEmpty()) {
             super.create(security);
         } else {
+            security.setId(getId(request));
             super.update(security);
         }
         return "redirect:/security";
