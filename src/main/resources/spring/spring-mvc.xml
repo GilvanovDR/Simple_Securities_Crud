@@ -42,4 +42,8 @@
         <property name="fallbackToSystemLocale" value="false"/>
     </bean>-->
     <bean class="ru.GilvanovDR.repository.DbPopulate"/>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="2000000" />
+    </bean>
 </beans>

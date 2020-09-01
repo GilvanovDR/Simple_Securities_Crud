@@ -32,4 +32,9 @@ public class RootController {
         model.addAttribute("security", securitiesService.getAll());
         return "security";
     }
+
+    @GetMapping("/upload")
+    public String upload() {
+        return "upload";
+    }
 }
