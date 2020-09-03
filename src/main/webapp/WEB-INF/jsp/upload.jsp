@@ -14,7 +14,7 @@
             <input class="btn btn-primary fa fa-plus" type="submit" value="Загрузить">
         </form>
         <c:if test="${not empty upload}">
-            <p>${upload}</p>
+            <div class="alert alert-primary">${upload}</div>
         </c:if>
     </div>
 
