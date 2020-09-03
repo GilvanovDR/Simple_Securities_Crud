@@ -3,21 +3,24 @@ package ru.GilvanovDR.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import ru.GilvanovDR.service.UploadService;
 import ru.GilvanovDR.util.XMLMapper;
-
-
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import ru.GilvanovDR.util.exception.NotFoundException;
 
 
 @Controller
 @RequestMapping("/upload")
 public class FileUploadController {
-
+    @Autowired
+    private UploadService service;
     private static final Logger log = LoggerFactory.getLogger(FileUploadController.class);
 /*    @RequestMapping(value="/upload", method= RequestMethod.GET)
     public @ResponseBody
@@ -26,22 +29,17 @@ public class FileUploadController {
     }*/
 
     @PostMapping()
-    public @ResponseBody String handleFileUpload(@RequestParam("name") String name,
-                                                 @RequestParam("file") MultipartFile file){
-        log.debug("UPLOAD file {}",file.getName());
-
-        if (!file.isEmpty()) {
-            try {
-
-
-
-                return "Вы удачно загрузили " + name + " в " + name + "-uploaded !";
-            } catch (Exception e) {
-                return "Вам не удалось загрузить " + name + " => " + e.getMessage();
-            }
-        } else {
-            return "Вам не удалось загрузить " + name + " потому что файл пустой.";
+    public
+    String handleFileUpload(@RequestParam("file") MultipartFile file, Model model) {
+        log.debug("UPLOAD file {}", file.getOriginalFilename());
+        try {
+            model.addAttribute("upload", "Всего загружено элементов " + service.uploadFile(file));
+        } catch (NotFoundException e) {
+            model.addAttribute("upload","Ошибка в загружаемом файле! Файл не загружен!");
         }
+        return "upload";
     }
-
 }
+
+
+

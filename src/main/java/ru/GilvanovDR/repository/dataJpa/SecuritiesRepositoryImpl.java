@@ -13,6 +13,7 @@ public class SecuritiesRepositoryImpl implements SecuritiesRepository {
     private static final Sort SORT_SEC_ID = Sort.by(Sort.Direction.ASC, "secID");
     private final CrudSecuritiesRepository securitiesRepository;
 
+
     public SecuritiesRepositoryImpl(CrudSecuritiesRepository securitiesRepository) {
         this.securitiesRepository = securitiesRepository;
     }
@@ -50,8 +51,7 @@ public class SecuritiesRepositoryImpl implements SecuritiesRepository {
     @Override
     //fixme use save (saveAll d't test double secId from input list and empty secId)
     public int saveAll(List<Security> securities) {
-        int counter = securities.size();
         securities.removeIf(security -> securitiesRepository.getBySecID(security.getSecID()) != null);
-        return counter - securitiesRepository.saveAll(securities).size();
+        return securitiesRepository.saveAll(securities).size();
     }
 }

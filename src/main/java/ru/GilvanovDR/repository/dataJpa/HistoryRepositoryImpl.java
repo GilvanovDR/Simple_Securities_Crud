@@ -1,5 +1,7 @@
 package ru.GilvanovDR.repository.dataJpa;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -15,6 +17,7 @@ import java.util.Map;
 public class HistoryRepositoryImpl implements HistoryRepository {
     private final CrudSecuritiesRepository securitiesRepository;
     private final CrudHistoryRepository historyRepository;
+
 
     public HistoryRepositoryImpl(CrudSecuritiesRepository securitiesRepository, CrudHistoryRepository historyRepository) {
         this.securitiesRepository = securitiesRepository;
@@ -65,7 +68,7 @@ public class HistoryRepositoryImpl implements HistoryRepository {
     public int saveAll(Map<History, String> history) {
         int count = 0;
         for (Map.Entry<History, String> entry : history.entrySet()) {
-            count += save(entry.getKey(), entry.getValue()) == null ? 1 : 0;
+            count += save(entry.getKey(), entry.getValue()) != null ? 1 : 0;
         }
         return count;
     }

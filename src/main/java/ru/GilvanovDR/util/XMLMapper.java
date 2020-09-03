@@ -41,7 +41,7 @@ public class XMLMapper {
         }
     }
 
-    private List<XmlSecurity> streamToSecurity(StreamSource streamSource) {
+    public List<XmlSecurity> streamToSecurity(StreamSource streamSource) {
         XmlSecurityContainer document;
         try {
             document = (XmlSecurityContainer) this.securitiesMarshaller.unmarshal(streamSource);
@@ -51,7 +51,7 @@ public class XMLMapper {
         return document.getDataContainer().getElements();
     }
 
-    private List<XmlHistory> streamToHistory(StreamSource streamSource) {
+    public List<XmlHistory> streamToHistory(StreamSource streamSource) {
         XmlHistoryContainer document;
         try {
             document = (XmlHistoryContainer) this.historyMarshaller.unmarshal(streamSource);

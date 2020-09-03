@@ -9,13 +9,15 @@
 
 <div class="jumbotron pt-4">
     <div class="container">
-        <form method="POST" enctype="multipart/form-data"
-              action="upload">
-            File to upload: <input type="file" name="file"><br/> Name: <input
-                type="text" name="name"><br/> <br/> <input type="submit"
-                                                           value="Upload"> Press here to upload the file!
+        <form method="POST" enctype="multipart/form-data" action="upload">
+            <input type="file" name="file">
+            <input class="btn btn-primary fa fa-plus" type="submit" value="Загрузить">
         </form>
+        <c:if test="${not empty upload}">
+            <p>${upload}</p>
+        </c:if>
     </div>
+
 </div>
 <jsp:include page="fragments/footer.jsp"/>
 </body>
