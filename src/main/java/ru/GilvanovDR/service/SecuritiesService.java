@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import ru.GilvanovDR.model.Security;
 import ru.GilvanovDR.repository.SecuritiesRepository;
+import ru.GilvanovDR.util.exception.NotFoundException;
 
 import java.util.List;
 
@@ -19,6 +20,9 @@ public class SecuritiesService {
     }
 
     public Security create(Security security) {
+        if (!security.getName().matches("^[0-9А-Яа-я\\s]+$")) {
+            throw new NotFoundException("Security name is't valid");
+        }
         Assert.notNull(security, "security must not be null");
         return checkNotFound(securitiesRepository.save(security), "Duplicate SecID");
     }
