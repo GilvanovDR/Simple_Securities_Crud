@@ -16,7 +16,7 @@
         <hr>
         <table border="1" cellpadding="8" cellspacing="0">
             <thead>
-            <tr>
+            <tr class="table table-dark">
                 <th>secId</th>
                 <th>regNumber</th>
                 <th>name</th>

@@ -8,7 +8,6 @@
             <a class="btn btn-outline-info mr-3 fa fa-plus" href="upload"></a>
             <a class="btn btn-info mr-1" href="security">Список ценных бумаг</a>
             <a class="btn btn-info mr-1" href="history">История ценных бумаг</a>
-            </a>
         </form>
     </div>
 </nav>

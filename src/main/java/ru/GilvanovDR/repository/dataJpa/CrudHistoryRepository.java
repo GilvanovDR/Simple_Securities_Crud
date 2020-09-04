@@ -17,9 +17,9 @@ public interface CrudHistoryRepository extends JpaRepository<History, Integer> {
     @Query("DELETE FROM History e WHERE e.id=:id")
     int delete(@Param("id") int id);
 
-    @Query("SELECT e FROM History e ORDER BY e.tradeDate DESC")
-    List<History> getAll();
-
     @Query("SELECT e FROM History e WHERE e.security.id=:secId and e.tradeDate=:tradeDate and e.numTrades=:numTrades")
     List<History> getExist(@Param("secId") int secId, @Param("tradeDate") LocalDate tradeDate, @Param("numTrades") Integer numTrades);
+
+    @Query("SELECT e FROM History e WHERE e.security.emitentTitle=:emitentTitle or e.tradeDate =:tradeDate")
+    List<History> getFilteredBy(@Param("emitentTitle") String emitentTitle, @Param("tradeDate") LocalDate tradeDate);
 }

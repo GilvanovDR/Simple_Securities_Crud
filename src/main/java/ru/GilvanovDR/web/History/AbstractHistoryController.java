@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.GilvanovDR.model.History;
 import ru.GilvanovDR.service.HistoryService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static ru.GilvanovDR.util.ValidationUtil.checkNew;
@@ -19,6 +20,16 @@ public abstract class AbstractHistoryController {
     public List<History> getAll() {
         log.info("getAll");
         return historyService.getAll();
+    }
+
+    public List<History> getSortedBy(String field) {
+        log.info("getSortedBy");
+        return historyService.getSortedAllBy(field);
+    }
+
+    protected  List<History> getFilteredBy(String emitentTitle, LocalDate tradeDate) {
+        log.info("getFilteredBy");
+        return historyService.getFilteredBy(emitentTitle,tradeDate);
     }
 
     public History get(int id) {

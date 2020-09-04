@@ -23,33 +23,33 @@ class DbUploaderTest extends AbstractTest {
 
     @Test
     void uploadNewSecurities() {
-        assertThat(dbUploader.secToDb(SECURITIES_PATH)).isEqualTo(0);
+        assertThat(dbUploader.secToDb(SECURITIES_PATH)).isEqualTo(10);
         assertThat(securitiesRepository.getAll().size()).isEqualTo(10);
 
     }
 
     @Test
     void uploadDoubleSecurities() {
-        assertThat(dbUploader.secToDb(SECURITIES_PATH)).isEqualTo(0);
         assertThat(dbUploader.secToDb(SECURITIES_PATH)).isEqualTo(10);
+        assertThat(dbUploader.secToDb(SECURITIES_PATH)).isEqualTo(0);
     }
 
     @Test
     void uploadHistoryToEmptyDb() {
-        assertThat(dbUploader.hisToDb(HISTORY_PATH)).isEqualTo(10);
+        assertThat(dbUploader.hisToDb(HISTORY_PATH)).isEqualTo(0);
     }
 
     @Test
     void uploadHistory() {
         uploadNewSecurities();
-        assertThat(dbUploader.hisToDb(HISTORY_PATH)).isEqualTo(0);
+        assertThat(dbUploader.hisToDb(HISTORY_PATH)).isEqualTo(10);
     }
 
     @Test
     void uploadDoubleHistory() {
         uploadNewSecurities();
-        assertThat(dbUploader.hisToDb(HISTORY_PATH)).isEqualTo(0);
         assertThat(dbUploader.hisToDb(HISTORY_PATH)).isEqualTo(10);
+        assertThat(dbUploader.hisToDb(HISTORY_PATH)).isEqualTo(0);
     }
 
     @Test

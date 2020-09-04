@@ -1,10 +1,12 @@
 package ru.GilvanovDR.service;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import ru.GilvanovDR.model.History;
 import ru.GilvanovDR.repository.HistoryRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static ru.GilvanovDR.util.ValidationUtil.checkNotFound;
@@ -39,5 +41,12 @@ public class HistoryService {
     public void update(History history, String secId) {
         Assert.notNull(history, "history must not be null");
         checkNotFoundWithId(historyRepository.save(history, secId), history.id());
+    }
+    public List<History> getSortedAllBy(String field) {
+        return historyRepository.getSortedAllBy(Sort.Direction.ASC,field);
+    }
+
+    public List<History> getFilteredBy(String emitentTitle, LocalDate tradeDate) {
+        return historyRepository.getFilteredBy(emitentTitle,tradeDate);
     }
 }

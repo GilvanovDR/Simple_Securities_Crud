@@ -9,9 +9,10 @@
 
 <div class="jumbotron pt-4">
     <div class="container">
+        <h3 class="text-center">Загрузить файл с данными московской биржи</h3>
         <form method="POST" enctype="multipart/form-data" action="upload">
             <input type="file" name="file">
-            <input class="btn btn-primary fa fa-plus" type="submit" value="Загрузить">
+            <input class="btn btn-primary" type="submit" value="Загрузить">
         </form>
         <c:if test="${not empty upload}">
             <div class="alert alert-primary">${upload}</div>
