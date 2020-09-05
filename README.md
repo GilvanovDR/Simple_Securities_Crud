@@ -1,3 +1,4 @@
+демо приложения на heroku https://simplesecuritiescrud.herokuapp.com/
 - информация о ценных бумагах (securities_*.xml)
     http://iss.moex.com/iss/securities.xml;
 - история торгов за произвольную дату (history_*.xml)
