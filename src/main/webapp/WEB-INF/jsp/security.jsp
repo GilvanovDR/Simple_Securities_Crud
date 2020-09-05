@@ -14,29 +14,31 @@
             Добавить ценную бумагу
         </a>
         <hr>
-        <table border="1" cellpadding="8" cellspacing="0">
-            <thead>
-            <tr class="table table-dark">
-                <th>secId</th>
-                <th>regNumber</th>
-                <th>name</th>
-                <th>emitentTitle</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <c:forEach items="${security}" var="security">
-                <jsp:useBean id="security" scope="page" type="ru.GilvanovDR.model.Security"/>
-                <tr>
-                    <td>${security.secID}</td>
-                    <td>${security.regNumber}</td>
-                    <td>${security.name}</td>
-                    <td>${security.emitentTitle}</td>
-                    <td><a class="btn btn-primary" href="security/update?id=${security.id}">Обновить</a></td>
-                    <td><a class="btn btn-danger" href="security/delete?id=${security.id}">Удалить</a></td>
+        <div class="table-responsive ">
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                <tr class="table table-dark">
+                    <th>secId</th>
+                    <th>regNumber</th>
+                    <th>name</th>
+                    <th>emitentTitle</th>
+                    <th></th>
+                    <th></th>
                 </tr>
-            </c:forEach>
-        </table>
+                </thead>
+                <c:forEach items="${security}" var="security">
+                    <jsp:useBean id="security" scope="page" type="ru.GilvanovDR.model.Security"/>
+                    <tr>
+                        <td>${security.secID}</td>
+                        <td>${security.regNumber}</td>
+                        <td>${security.name}</td>
+                        <td>${security.emitentTitle}</td>
+                        <td><a class="btn btn-primary" href="security/update?id=${security.id}">Обновить</a></td>
+                        <td><a class="btn btn-danger" href="security/delete?id=${security.id}">Удалить</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </div>
 </div>
 <jsp:include page="fragments/footer.jsp"/>
