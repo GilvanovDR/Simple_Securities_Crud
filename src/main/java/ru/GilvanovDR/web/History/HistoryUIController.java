@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.GilvanovDR.model.History;
+import ru.GilvanovDR.util.exception.NotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
@@ -36,18 +37,25 @@ public class HistoryUIController extends AbstractHistoryController {
     }
 
     @PostMapping
-    public String updateOrCreate(HttpServletRequest request) {
+    public String updateOrCreate(HttpServletRequest request,Model model) {
         History history = new History(
                 null,
                 LocalDate.parse(request.getParameter("tradeDate")),
                 Integer.parseInt(request.getParameter("numTrades")),
                 "".equals(request.getParameter("open")) ? null : Double.parseDouble(request.getParameter("open")),
                 "".equals(request.getParameter("close")) ? null : Double.parseDouble(request.getParameter("close")));
-        if (request.getParameter("id").isEmpty()) {
-            super.create(history, getSecId(request));
-        } else {
-            history.setId(getId(request));
-            super.update(history, getSecId(request));
+        try {
+            if (request.getParameter("id").isEmpty()) {
+                super.create(history, getSecId(request));
+            } else {
+                history.setId(getId(request));
+                super.update(history, getSecId(request));
+            }
+        } catch (NotFoundException e) {
+            model.addAttribute("history",history);
+            model.addAttribute("error",e.getMessage());
+            model.addAttribute("stingSecId", getSecId(request));
+            return "historyForm";
         }
         return "redirect:/history";
     }

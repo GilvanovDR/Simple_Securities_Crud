@@ -41,9 +41,6 @@ public class SecuritiesRepositoryImpl implements SecuritiesRepository {
     @Transactional
     @Override
     public Security save(Security security) {
-        if (securitiesRepository.getBySecID(security.getSecID()) != null) {
-            return null;
-        }
         return securitiesRepository.save(security);
     }
 

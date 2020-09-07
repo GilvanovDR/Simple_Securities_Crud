@@ -17,11 +17,13 @@
             <input type="hidden" name="id" value="${history.id}">
             <dl>
                 <dt>SecId:</dt>
-                <dd><input type="text" value="${history.security.secID}" size=40 name="secId" required></dd>
+                <dd><input type="text"
+                           value="${history.security.secID}<c:if test="${not empty stingSecId}">${stingSecId}</c:if>"
+                           size=40 name="secId" required></dd>
             </dl>
             <dl>
                 <dt>tradedate:</dt>
-                <dd><input type="date" value="${history.tradeDate}" name="tradeDate" ></dd>
+                <dd><input type="date" value="${history.tradeDate}" name="tradeDate"></dd>
             </dl>
             <dl>
                 <dt>numtrades:</dt>
@@ -29,16 +31,19 @@
             </dl>
             <dl>
                 <dt>open:</dt>
-                <dd><input type="number" step=0.01 value="${history.open}" size=40 name="open" ></dd>
+                <dd><input type="number" step=0.01 value="${history.open}" size=40 name="open"></dd>
             </dl>
             <dl>
                 <dt>close:</dt>
-                <dd><input type="number" step=0.01 value="${history.close}" size=40 name="close" ></dd>
+                <dd><input type="number" step=0.01 value="${history.close}" size=40 name="close"></dd>
             </dl>
 
             <button class="btn btn-success" type="submit">Сохранить</button>
             <button class="btn btn-warning" onclick="window.history.back()" type="button">Отменить</button>
         </form>
+        <c:if test="${not empty error}">
+            <div class="alert alert-warning">${error}</div>
+        </c:if>
     </div>
 </div>
 <jsp:include page="fragments/footer.jsp"/>
