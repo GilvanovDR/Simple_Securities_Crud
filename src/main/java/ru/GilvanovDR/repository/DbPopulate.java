@@ -6,7 +6,6 @@ import ru.GilvanovDR.util.XMLMapper;
 import ru.GilvanovDR.util.exception.NotFoundException;
 
 import javax.annotation.PostConstruct;
-import java.io.FileNotFoundException;
 
 public class DbPopulate {
     @Autowired
@@ -29,13 +28,19 @@ public class DbPopulate {
     public void dataInit() {
         new Thread(() -> {
             try {
-                 Thread.sleep(100);
-                securityURLToDb("http://localhost:8080/Simple_Securities_Crud_war_exploded/resources/xml/securities_1.xml");
-                securityURLToDb("http://localhost:8080/Simple_Securities_Crud_war_exploded/resources/xml/securities_2.xml");
-                historyURLToDb("http://localhost:8080/Simple_Securities_Crud_war_exploded/resources/xml/history_1.xml");
-                historyURLToDb("http://localhost:8080/Simple_Securities_Crud_war_exploded/resources/xml/history_2.xml");
-                historyURLToDb("http://localhost:8080/Simple_Securities_Crud_war_exploded/resources/xml/history_3.xml");
-                historyURLToDb("http://localhost:8080/Simple_Securities_Crud_war_exploded/resources/xml/history_4.xml");
+                Thread.sleep(100);
+/*                securityURLToDb("http://localhost:8080/Simple_Securities_Crud/resources/xml/securities_1.xml");
+                securityURLToDb("http://localhost:8080/Simple_Securities_Crud/resources/xml/securities_2.xml");
+                historyURLToDb("http://localhost:8080/Simple_Securities_Crud/resources/xml/history_1.xml");
+                historyURLToDb("http://localhost:8080/Simple_Securities_Crud/resources/xml/history_2.xml");
+                historyURLToDb("http://localhost:8080/Simple_Securities_Crud/resources/xml/history_3.xml");
+                historyURLToDb("http://localhost:8080/Simple_Securities_Crud/resources/xml/history_4.xml");  */
+                securityURLToDb("https://simplesecuritiescrud.herokuapp.com/resources/xml/securities_1.xml");
+                securityURLToDb("https://simplesecuritiescrud.herokuapp.com/resources/xml/securities_2.xml");
+                historyURLToDb("https://simplesecuritiescrud.herokuapp.com/resources/xml/history_1.xml");
+                historyURLToDb("https://simplesecuritiescrud.herokuapp.com/resources/xml/history_2.xml");
+                historyURLToDb("https://simplesecuritiescrud.herokuapp.com/resources/xml/history_3.xml");
+                historyURLToDb("https://simplesecuritiescrud.herokuapp.com/resources/xml/history_4.xml");
             } catch (InterruptedException v) {
                 throw new NotFoundException("Error uploadData:" + v);
             }

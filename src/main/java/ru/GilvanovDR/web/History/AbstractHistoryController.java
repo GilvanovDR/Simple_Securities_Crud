@@ -27,9 +27,9 @@ public abstract class AbstractHistoryController {
         return historyService.getSortedAllBy(field);
     }
 
-    protected  List<History> getFilteredBy(String emitentTitle, LocalDate tradeDate) {
+    protected List<History> getFilteredBy(String emitentTitle, LocalDate tradeDate) {
         log.info("getFilteredBy");
-        return historyService.getFilteredBy(emitentTitle,tradeDate);
+        return historyService.getFilteredBy(emitentTitle, tradeDate);
     }
 
     public History get(int id) {

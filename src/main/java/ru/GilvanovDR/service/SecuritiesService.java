@@ -21,7 +21,7 @@ public class SecuritiesService {
 
     public Security create(Security security) {
         if (!security.getName().matches("^[0-9А-Яа-я\\s]+$")) {
-            throw new NotFoundException("Security name is't valid");
+            throw new NotFoundException("Security name isn't valid");
         }
         Assert.notNull(security, "security must not be null");
         return checkNotFound(securitiesRepository.save(security), "Duplicate SecID");

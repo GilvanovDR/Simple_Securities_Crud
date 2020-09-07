@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = SecurityRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class SecurityRestController extends AbstractSecurityController{
+public class SecurityRestController extends AbstractSecurityController {
     static final String REST_URL = "/rest/security";
 
     @GetMapping

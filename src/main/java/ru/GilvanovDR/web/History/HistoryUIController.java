@@ -37,7 +37,7 @@ public class HistoryUIController extends AbstractHistoryController {
     }
 
     @PostMapping
-    public String updateOrCreate(HttpServletRequest request,Model model) {
+    public String updateOrCreate(HttpServletRequest request, Model model) {
         History history = new History(
                 null,
                 LocalDate.parse(request.getParameter("tradeDate")),
@@ -52,8 +52,8 @@ public class HistoryUIController extends AbstractHistoryController {
                 super.update(history, getSecId(request));
             }
         } catch (NotFoundException e) {
-            model.addAttribute("history",history);
-            model.addAttribute("error",e.getMessage());
+            model.addAttribute("history", history);
+            model.addAttribute("error", e.getMessage());
             model.addAttribute("stingSecId", getSecId(request));
             return "historyForm";
         }
@@ -76,8 +76,8 @@ public class HistoryUIController extends AbstractHistoryController {
     }
 
     @GetMapping("/filterBy")
-    public String getFilteredBy(@Nullable @RequestParam String emitentTitle,@RequestParam String tradeDate, Model model) {
-        model.addAttribute("history", super.getFilteredBy(emitentTitle, "".equals(tradeDate) ? null:LocalDate.parse(tradeDate)));
+    public String getFilteredBy(@Nullable @RequestParam String emitentTitle, @RequestParam String tradeDate, Model model) {
+        model.addAttribute("history", super.getFilteredBy(emitentTitle, "".equals(tradeDate) ? null : LocalDate.parse(tradeDate)));
         return "history";
     }
 }

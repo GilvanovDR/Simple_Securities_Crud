@@ -42,11 +42,12 @@ public class HistoryService {
         Assert.notNull(history, "history must not be null");
         checkNotFoundWithId(historyRepository.save(history, secId), history.id());
     }
+
     public List<History> getSortedAllBy(String field) {
-        return historyRepository.getSortedAllBy(Sort.Direction.ASC,field);
+        return historyRepository.getSortedAllBy(Sort.Direction.ASC, field);
     }
 
     public List<History> getFilteredBy(String emitentTitle, LocalDate tradeDate) {
-        return historyRepository.getFilteredBy(emitentTitle,tradeDate);
+        return historyRepository.getFilteredBy(emitentTitle, tradeDate);
     }
 }

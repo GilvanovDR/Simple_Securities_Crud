@@ -26,7 +26,7 @@ public class SecurityTestData {
     public static TestMatcher<Security> SECURITY_MATCHER = TestMatcher.usingFieldsWithIgnoringComparator(Security.class);
 
     public static Security getNew() {
-        return new Security("AAA", "", "NEW NAME", "NEW EMITENT TITLE");
+        return new Security("AAA", "", "новое имя", "NEW EMITENT TITLE");
     }
 
     public static Security getUpdated() {

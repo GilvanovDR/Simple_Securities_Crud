@@ -6,8 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.GilvanovDR.model.History;
-import ru.GilvanovDR.model.Security;
-import ru.GilvanovDR.web.Security.AbstractSecurityController;
 
 import java.net.URI;
 import java.util.List;
@@ -29,8 +27,8 @@ public class HistoryRestController extends AbstractHistoryController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<History> createWithLocation(@RequestBody History history,@RequestBody String secId) {
-        History created = super.create(history,secId);
+    public ResponseEntity<History> createWithLocation(@RequestBody History history, @RequestBody String secId) {
+        History created = super.create(history, secId);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
                 .buildAndExpand(created.getId()).toUri();
@@ -47,8 +45,8 @@ public class HistoryRestController extends AbstractHistoryController {
     @Override
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void update(@RequestBody History history,@RequestBody String secId) {
-        super.update(history,secId);
+    public void update(@RequestBody History history, @RequestBody String secId) {
+        super.update(history, secId);
     }
 
 }
