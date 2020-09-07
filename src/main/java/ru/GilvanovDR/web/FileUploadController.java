@@ -9,33 +9,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import ru.GilvanovDR.service.UploadService;
-import ru.GilvanovDR.util.XMLMapper;
 import ru.GilvanovDR.util.exception.NotFoundException;
 
 
 @Controller
 @RequestMapping("/upload")
 public class FileUploadController {
+    private static final Logger log = LoggerFactory.getLogger(FileUploadController.class);
     @Autowired
     private UploadService service;
-    private static final Logger log = LoggerFactory.getLogger(FileUploadController.class);
-/*    @RequestMapping(value="/upload", method= RequestMethod.GET)
-    public @ResponseBody
-    String provideUploadInfo() {
-        return "uploadForm";
-    }*/
 
     @PostMapping()
-    public
-    String handleFileUpload(@RequestParam("file") MultipartFile file, Model model) {
+    public String handleFileUpload(@RequestParam("file") MultipartFile file, Model model) {
         log.debug("UPLOAD file {}", file.getOriginalFilename());
         try {
             model.addAttribute("upload", "Всего загружено элементов " + service.uploadFile(file));
         } catch (NotFoundException e) {
-            model.addAttribute("upload","Ошибка в загружаемом файле! Файл не загружен!");
+            model.addAttribute("upload", "Ошибка в загружаемом файле! Файл не загружен!");
         }
         return "upload";
     }

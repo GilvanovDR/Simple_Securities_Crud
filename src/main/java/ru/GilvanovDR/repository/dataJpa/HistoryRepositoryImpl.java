@@ -1,7 +1,5 @@
 package ru.GilvanovDR.repository.dataJpa;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,8 +26,8 @@ public class HistoryRepositoryImpl implements HistoryRepository {
     @Transactional
     @Override
     public List<History> getAll() {
-       return getSortedAllBy(Sort.Direction.DESC,"tradeDate");
-       //return historyRepository.getAll();
+        return getSortedAllBy(Sort.Direction.DESC, "tradeDate");
+        //return historyRepository.getAll();
     }
 
     @Override
@@ -75,12 +73,13 @@ public class HistoryRepositoryImpl implements HistoryRepository {
         }
         return count;
     }
-    public List<History> getSortedAllBy(Sort.Direction direction,String field) {
+
+    public List<History> getSortedAllBy(Sort.Direction direction, String field) {
         return historyRepository.findAll(Sort.by(direction, field));
     }
 
     @Override
     public List<History> getFilteredBy(String emitentTitle, LocalDate tradeDate) {
-        return historyRepository.getFilteredBy(emitentTitle,tradeDate);
+        return historyRepository.getFilteredBy(emitentTitle, tradeDate);
     }
 }

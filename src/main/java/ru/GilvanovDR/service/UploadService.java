@@ -13,15 +13,14 @@ import ru.GilvanovDR.util.XMLMapper;
 import ru.GilvanovDR.util.exception.NotFoundException;
 
 import javax.xml.transform.stream.StreamSource;
-import java.io.IOException;
 import java.util.List;
 
 @Service
 public class UploadService {
+    private static final Logger log = LoggerFactory.getLogger(UploadService.class);
     private final XMLMapper xmlMapper;
     private final HistoryRepository historyRepository;
     private final SecuritiesRepository securitiesRepository;
-    private static final Logger log = LoggerFactory.getLogger(UploadService.class);
 
     public UploadService(XMLMapper xmlMapper, HistoryRepository historyRepository, SecuritiesRepository securitiesRepository) {
         this.xmlMapper = xmlMapper;

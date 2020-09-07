@@ -45,8 +45,8 @@ public class SecurityUIController extends AbstractSecurityController {
             try {
                 super.create(security);
             } catch (NotFoundException e) {
-                model.addAttribute("error",e.getMessage());
-                model.addAttribute("security",security);
+                model.addAttribute("error", e.getMessage());
+                model.addAttribute("security", security);
                 return "securityForm";
             }
         } else {

@@ -34,6 +34,12 @@ class SecuritiesServiceTest extends AbstractTest {
         SECURITY_MATCHER.assertMatch(created, newSecurity);
         SECURITY_MATCHER.assertMatch(securitiesService.get(newId), newSecurity);
     }
+    @Test
+    void createNotValidName() {
+        Security newSecurity = getNew();
+        newSecurity.setName("not valid Name");
+        assertThrows(NotFoundException.class, () -> securitiesService.create(newSecurity));
+    }
 
     @Test
     void duplicateSecurityIdCreate() {
