@@ -34,6 +34,9 @@
             <button class="btn btn-success" type="submit">Сохранить</button>
             <button class="btn btn-warning" onclick="window.history.back()" type="button">Отменить</button>
         </form>
+        <c:if test="${not empty error}">
+            <div class="alert alert-warning">${error}</div>
+        </c:if>
     </div>
 </div>
 <jsp:include page="fragments/footer.jsp"/>

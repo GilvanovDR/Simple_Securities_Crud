@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.GilvanovDR.model.Security;
+import ru.GilvanovDR.util.exception.NotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
@@ -33,7 +34,7 @@ public class SecurityUIController extends AbstractSecurityController {
     }
 
     @PostMapping
-    public String updateOrCreate(HttpServletRequest request) {
+    public String updateOrCreate(HttpServletRequest request, Model model) {
         Security security = new Security(
                 request.getParameter("secId"),
                 request.getParameter("regNumber"),
@@ -41,7 +42,13 @@ public class SecurityUIController extends AbstractSecurityController {
                 request.getParameter("emitentTitle"));
 
         if (request.getParameter("id").isEmpty()) {
-            super.create(security);
+            try {
+                super.create(security);
+            } catch (NotFoundException e) {
+                model.addAttribute("error",e.getMessage());
+                model.addAttribute("security",security);
+                return "securityForm";
+            }
         } else {
             security.setId(getId(request));
             super.update(security);
