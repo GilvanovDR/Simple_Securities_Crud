@@ -30,6 +30,7 @@ public class SecurityTestData {
     }
 
     public static Security getUpdated() {
+
         return new Security("UPDATED", "UPDATED", "UPDATED", "UPDATED", SECURITY1_ID);
     }
 }
