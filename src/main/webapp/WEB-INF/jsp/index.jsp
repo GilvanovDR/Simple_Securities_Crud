@@ -43,7 +43,6 @@
             <li>Реализовать фоновое выполнение парсинга данных по расписанию</li>
             <li>Реализовать авторизацию (Spring security)</li>
         </ul>
-        <br>
     </div>
 </div>
 <jsp:include page="fragments/footer.jsp"/>
